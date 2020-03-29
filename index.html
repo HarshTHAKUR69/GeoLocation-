@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to get your coordinates.</p>
+
+<button onclick="getLocation()">Click To know Your Location</button>
+
+<p id="zom"></p>
+
+<script>
+var x = document.getElementById("zom");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+}
+
+function showError(error) {
+  switch(error.code) {
+    case error.PERMISSION_DENIED:
+      x.innerHTML = "User denied the request for Geolocation."
+      break;
+    case error.POSITION_UNAVAILABLE:
+      x.innerHTML = "Location information is unavailable."
+      break;
+    case error.TIMEOUT:
+      x.innerHTML = "The request to get user location timed out."
+      break;
+    case error.UNKNOWN_ERROR:
+      x.innerHTML = "An unknown error occurred."
+      break;
+  }
+}
+</script>
+
+     <div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13748.700537259449!2d76.6597778!3d30.5160865!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x81b346dee91799ca!2sChitkara%20University!5e0!3m2!1sen!2sin!4v1580838470981!5m2!1sen!2sin" width="800" height="600" frameborder="0" style="border:0;" allowfullscreen="" width="800" height="600" frameborder="0" style="border:0;" allowfullscreen=""  ></iframe>" 
+     </div>
+</div>
+</body>
+</html>
